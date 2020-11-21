@@ -1,0 +1,19 @@
+<h1>This is the index page</h1>
+
+<ul>
+<% @tasks.each do |task|  %>
+  <li>
+  <% if task.completed  %>
+    [X] - <%= link_to task.title, task_path(task) %>
+  <% else %> 
+    [ ] - <%= link_to task.title, task_path(task) %>
+     <% end %>
+     <%= link_to "Delete #{@task.title}",
+     task.path(@task),
+     method: :delete,
+     data: { confirm: "Are you sure you want to proceed to delete"} 
+     %>
+  </li>
+   
+  <% end %>
+</ul>
